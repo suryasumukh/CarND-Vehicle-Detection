@@ -1,0 +1,8 @@
+# IPYNB 
+.ipynb_checkpoints
+
+# IntelliJ
+.idea
+
+# Data
+data
