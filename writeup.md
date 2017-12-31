@@ -109,10 +109,57 @@ The final parameters were -
 
 A sklearn Pipeline was created with `StandardScalar()` transformation and `LinearSVC()` classifier. A temporary `HogFeatureExtractor()` transformer was created to aid HOG parameter search. GridSearchCV with `cv=3` was employed to find best performing classifier. The code can be found in cells 7-20 of `notebooks/classifier.ipynb`. The hyper-params mostly consisted of HOG params. The out of the box params for `LinearSVC()` were sufficient to get a high f1 score and did not need tuning. `C=1` was used for the SVM for a `max_iter=1000`.
 
-GridSearchCV was performed on two sets of features, one consisting of only HOG features and the other consisting of histogram features in addition to HOG features. F1 score was chosen as the scoring function for grid search. The following are the results are CV.
+GridSearchCV was performed on two sets of features, one consisting of only HOG features and the other consisting of histogram features in addition to HOG features. F1 score was chosen as the scoring function for grid search. The results of GridSearchCV
+
+| f1_test_hog | f1_train_hog | param_hog__cells_per_block | param_hog__color_scheme | param_hog__orientation | param_hog__pixels_per_cell | f1_test_hog_w_hist | f1_train_hog_w_hist |          |
+|-------------|--------------|----------------------------|-------------------------|------------------------|----------------------------|--------------------|---------------------|----------|
+| 0           | 0.963889     | 1.000000                   | 2                       | 4                      | 9                          | 8                  | 0.976151            | 1.000000 |
+| 1           | 0.954056     | 0.998134                   | 2                       | 4                      | 9                          | 16                 | 0.969840            | 0.999540 |
+| 2           | 0.966355     | 1.000000                   | 2                       | 4                      | 11                         | 8                  | 0.974732            | 1.000000 |
+| 3           | 0.955341     | 0.999261                   | 2                       | 4                      | 11                         | 16                 | 0.972904            | 0.999717 |
+| 4           | 0.966127     | 1.000000                   | 2                       | 4                      | 13                         | 8                  | 0.976717            | 1.000000 |
+| 5           | 0.959135     | 0.999648                   | 2                       | 4                      | 13                         | 16                 | 0.974696            | 0.999965 |
+| 6           | 0.982921     | 1.000000                   | 2                       | 52                     | 9                          | 8                  | 0.988252            | 1.000000 |
+| 7           | 0.971237     | 0.999965                   | 2                       | 52                     | 9                          | 16                 | 0.985893            | 1.000000 |
+| 8           | 0.982438     | 1.000000                   | 2                       | 52                     | 11                         | 8                  | 0.988455            | 1.000000 |
+| 9           | 0.973128     | 0.999930                   | 2                       | 52                     | 11                         | 16                 | 0.987495            | 1.000000 |
+| 10          | 0.984349     | 1.000000                   | 2                       | 52                     | 13                         | 8                  | 0.988813            | 1.000000 |
+| 11          | 0.974446     | 0.999965                   | 2                       | 52                     | 13                         | 16                 | 0.987364            | 1.000000 |
+| 12          | 0.987161     | 1.000000                   | 2                       | 36                     | 9                          | 8                  | 0.991289            | 1.000000 |
+| 13          | 0.984241     | 1.000000                   | 2                       | 36                     | 9                          | 16                 | 0.989394            | 1.000000 |
+| 14          | 0.987645     | 1.000000                   | 2                       | 36                     | 11                         | 8                  | 0.990998            | 1.000000 |
+| 15          | 0.986141     | 0.999965                   | 2                       | 36                     | 11                         | 16                 | 0.990594            | 1.000000 |
+| 16          | 0.988783     | 1.000000                   | 2                       | 36                     | 13                         | 8                  | 0.991990            | 1.000000 |
+| 17          | 0.986857     | 1.000000                   | 2                       | 36                     | 13                         | 16                 | 0.990599            | 1.000000 |
+| 18          | 0.963401     | 1.000000                   | 3                       | 4                      | 9                          | 8                  | 0.975405            | 1.000000 |
+| 19          | 0.948823     | 0.988052                   | 3                       | 4                      | 9                          | 16                 | 0.964556            | 0.999328 |
+| 20          | 0.963909     | 1.000000                   | 3                       | 4                      | 11                         | 8                  | 0.975015            | 1.000000 |
+| 21          | 0.945584     | 0.995328                   | 3                       | 4                      | 11                         | 16                 | 0.965114            | 0.999434 |
+| 22          | 0.963226     | 1.000000                   | 3                       | 4                      | 13                         | 8                  | 0.974705            | 1.000000 |
+| 23          | 0.952299     | 0.999226                   | 3                       | 4                      | 13                         | 16                 | 0.968561            | 0.999788 |
+| 24          | 0.978552     | 1.000000                   | 3                       | 52                     | 9                          | 8                  | 0.987548            | 1.000000 |
+| 25          | 0.965851     | 0.999753                   | 3                       | 52                     | 9                          | 16                 | 0.982687            | 0.999929 |
+| 26          | 0.979664     | 1.000000                   | 3                       | 52                     | 11                         | 8                  | 0.987478            | 1.000000 |
+| 27          | 0.968013     | 0.999754                   | 3                       | 52                     | 11                         | 16                 | 0.984698            | 0.999965 |
+| 28          | 0.981402     | 1.000000                   | 3                       | 52                     | 13                         | 8                  | 0.987825            | 1.000000 |
+| 29          | 0.971001     | 0.999965                   | 3                       | 52                     | 13                         | 16                 | 0.985186            | 0.999965 |
+| 30          | 0.987381     | 1.000000                   | 3                       | 36                     | 9                          | 8                  | 0.990580            | 1.000000 |
+| 31          | 0.979681     | 0.999930                   | 3                       | 36                     | 9                          | 16                 | 0.986369            | 0.999965 |
+| 32          | 0.988571     | 1.000000                   | 3                       | 36                     | 11                         | 8                  | 0.990725            | 1.000000 |
+| 33          | 0.982772     | 1.000000                   | 3                       | 36                     | 11                         | 16                 | 0.987289            | 1.000000 |
+| 34          | 0.987880     | 1.000000                   | 3                       | 36                     | 13                         | 8                  | 0.991430            | 1.000000 |
+| 35          | 0.983923     | 0.999930                   | 3                       | 36                     | 13                         |                    |                     |          |
 
 
 All 3 color channels of YCrCb along with histogram features with bin size 32 were used as features. As explained earlier `orientations=13` produced more False Positives, so `orientations=9` were chosen. With the newly chosen parameter a separate pipeline was constructed without the `HogFeatureExtractor()` transformer was trained and the pipeline was saved in a pickle file.
+
+Accuracy: 0.986204954955  
+F1 Score: 0.98633955952  
+FP: 25  
+FN: 24  
+TP: 1734  
+TN: 1769  
+
 
 ### Sliding Window Search
 
