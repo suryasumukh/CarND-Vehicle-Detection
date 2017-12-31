@@ -12,8 +12,8 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 [image1]: ./output_images/hog_vehicles.png
 [image2]: ./output_images/hog_non_vehicles.png
-[image3]: ./output_images/scale1.jpg
-[image4]: ./output_images/scale2.jpg
+[image3]: ./output_images/scale1.png
+[image4]: ./output_images/scale2.png
 [image5]: ./output_images/scale3.png
 [image6]: ./output_images/pipeline_test.png
 [image7]: ./output_images/test_image1.png
@@ -68,8 +68,10 @@ def read(data_dir, fn):
 
 Here is an example using the `YCrCb` color space and HOG parameters of `orientations=9`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
 
+**Vehicles**  
 ![alt text][image1]  
-![alt text][image2]  
+**Non Vehicles**    
+![alt text][image2]    
 
 #### 2. Explain how you settled on your final choice of HOG parameters.
 
