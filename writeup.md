@@ -175,13 +175,13 @@ TN: 1710
 
 As suggested, HOG features were extracted once for the bottom half of the image and slices were used at prediction time. Three scales were chosen to convolve over the bottom half of the image. The following are the images of sliding window scales. The relevant code can be found in cells 13 & 22 of `notebooks/sliding-window.ipynb`.
 
-A scale size of 1 and cell overlap of 1 was used between 400 and 500 pixels on the image.
+A scale size of 1.0 and cell overlap of 1 was used between 400 and 500 pixels on the image.
 ![alt text][image3]  
 
-A scale of size 2 and cell overlap of 2 was used between 400 and 600 pixels.  
+A scale of size 1.5 and cell overlap of 2 was used between 400 and 600 pixels.  
 ![alt text][image4]  
 
-The third scale with size 3 and cell overlap of 3 was used between 400 and 670 pixels.  
+The third scale with size 3.0 and cell overlap of 3 was used between 400 and 670 pixels.  
 ![alt text][image5]  
 
 #### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
