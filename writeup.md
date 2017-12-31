@@ -10,14 +10,18 @@ The goals / steps of this project are the following:
 * Estimate a bounding box for vehicles detected.
 
 [//]: # (Image References)
-[image1]: ./examples/car_not_car.png
-[image2]: ./examples/HOG_example.jpg
-[image3]: ./examples/sliding_windows.jpg
-[image4]: ./examples/sliding_window.jpg
-[image5]: ./examples/bboxes_and_heat.png
-[image6]: ./examples/labels_map.png
-[image7]: ./examples/output_bboxes.png
-[video1]: ./project_video.mp4
+[image1]: ./output_images/hog_vehicles.png
+[image2]: ./output_images/hog_non_vehicles.png
+[image3]: ./output_images/scale1.jpg
+[image4]: ./output_images/scale2.jpg
+[image5]: ./output_images/scale3.png
+[image6]: ./output_images/pipeline_test.png
+[image7]: ./output_images/test_image1.png
+[image8]: ./output_images/test_image2.png
+[image9]: ./output_images/test_image3.png
+[image10]: ./output_images/test_image4.png
+[image11]: ./output_images/test_image5.png
+[image12]: ./output_images/test_image6.png
 
 
 ### Histogram of Oriented Gradients (HOG)
@@ -64,7 +68,8 @@ def read(data_dir, fn):
 
 Here is an example using the `YCrCb` color space and HOG parameters of `orientations=9`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
 
-![alt text][image2]
+![alt text][image1]  
+![alt text][image2]  
 
 #### 2. Explain how you settled on your final choice of HOG parameters.
 
@@ -111,23 +116,28 @@ All 3 color channels of YCrCb along with histogram features with bin size 32 wer
 
 #### 1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
 
-As suggested, HOG features were extracted once for the bottom half of the image and slices were used at prediction time. Three scales were chosen to convolve over the bottom half of the image. A scale size of 1 and cell overlap of 1 was used between 400 and 500 pixels on the image. A scale of size 2 and cell overlap of 2 was used between 400 and 600 pixels. The third scale with size 3 and cell overlap of 3 was used between 400 and 670 pixels. The following are the images of sliding window scales.  The relevant code can be found in cells 13 & 22 of `notebooks/sliding-window.ipynb`.
+As suggested, HOG features were extracted once for the bottom half of the image and slices were used at prediction time. Three scales were chosen to convolve over the bottom half of the image. The following are the images of sliding window scales. The relevant code can be found in cells 13 & 22 of `notebooks/sliding-window.ipynb`.
 
-![alt text][image3]
-![alt text][image3]
-![alt text][image3]
+A scale size of 1 and cell overlap of 1 was used between 400 and 500 pixels on the image.
+![alt text][image3]  
+
+A scale of size 2 and cell overlap of 2 was used between 400 and 600 pixels.  
+![alt text][image4]  
+
+The third scale with size 3 and cell overlap of 3 was used between 400 and 670 pixels.  
+![alt text][image5]  
 
 #### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
-The classifier was trained with the above described HOG params along with histogram features of all 3 channels of YCrCb color scheme. The following it the output on test images.
+The classifier was trained with the above described HOG params along with histogram features of all 3 channels of YCrCb color scheme. Sliding windows with scales defined above are used to detect potions of the image that contain images. The following it the output on test images.
 
-![alt text][image4]
+![alt text][image6]
 ---
 
 ### Video Implementation
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
-Here's a [link to my video result](./project_video.mp4)
+Here's a [link to my video result](./project_video_hist.mp4)
 
 
 #### 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
@@ -137,7 +147,11 @@ As suggested in the lesson, heatmap and threshold were used to reduce some of th
 Here are six frames and their corresponding heatmaps:
 
 ![alt text][image7]
-
+![alt text][image8]
+![alt text][image9]
+![alt text][image10]
+![alt text][image11]
+![alt text][image12]
 ---
 
 ### Discussion
